@@ -52,7 +52,7 @@ pipelines:
                       - export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
                       - export COMMIT_HASH=$(echo $BITBUCKET_COMMIT | cut -c1-7)
                       - export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
-                      - docker build --build-arg NPM_TOKEN=$NPM_TOKEN -t $IMAGE_TAG .
+                      - docker build --build-arg -t $IMAGE_TAG .
                       - docker push $IMAGE_TAG
 
 #            - step:
