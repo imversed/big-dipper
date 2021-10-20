@@ -1,0 +1,61 @@
+image:
+    name: us.gcr.io/spair-api/deploy/ci:7.0.0
+    username: _json_key
+    password: '$PIPLENE_CI_IMG_PULL_API_KEY'
+
+options:
+    docker: true
+    max-time: 30
+
+#deployByCommitScript: &deployByCommitScript
+#    - . configure
+#    - export APP_NAME=$(jq -r .name package.json)
+#    - export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
+#    - export COMMIT_HASH=$(echo $BITBUCKET_COMMIT | cut -c1-7)
+#    - export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
+#    - |
+#        helm upgrade $HELM_RELEASE fulldive/service \
+#        --install \
+#        --namespace $KUBERNETES_NAMESPACE \
+#        -f deploy/api/values.yml \
+#        --set-string "image.tag=$COMMIT_HASH" \
+#        --set-string "service.http.ingress.host=$HOST" \
+#        --set-string "resources.requests.cpu=$REQUESTS_CPU" \
+#        --set-string "resources.requests.memory=$REQUESTS_MEMORY" \
+#        --set-string "resources.limits.cpu=$LIMITS_CPU" \
+#        --set-string "resources.limits.memory=$LIMITS_MEMORY" \
+#        --wait
+#
+#tagLatestImageScript: &tagLatestImageScript
+#    - . configure
+#    - export APP_NAME=$(jq -r .name package.json)
+#    - export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
+#    - export IMAGE_VERSION=$(jq -r .version package.json)
+#    - export IMAGE_VERSION_TAG=$IMAGE_NAME:$IMAGE_VERSION
+#    - export IMAGE_LATEST_TAG=$IMAGE_NAME:latest
+#    - docker pull $IMAGE_VERSION_TAG
+#    - docker tag $IMAGE_VERSION_TAG $IMAGE_LATEST_TAG
+#    - docker push $IMAGE_LATEST_TAG
+
+pipelines:
+    branches:
+        # deploy stage in test needs, remove before merge in master
+        master:
+            - step:
+                  name: Build docker image
+                  caches:
+                      - docker
+                  size: 2x
+                  script:
+                      - . configure
+                      - export APP_NAME=$(jq -r .name package.json)
+                      - export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
+                      - export COMMIT_HASH=$(echo $BITBUCKET_COMMIT | cut -c1-7)
+                      - export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
+                      - docker build --build-arg NPM_TOKEN=$NPM_TOKEN -t $IMAGE_TAG .
+                      - docker push $IMAGE_TAG
+
+#            - step:
+#                  name: Deploy to Staging
+#                  deployment: Staging
+#                  script: *deployByCommitScript
