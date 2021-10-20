@@ -45,7 +45,7 @@ pipelines:
                   name: Build docker image
                   caches:
                       - docker
-                  size: 2x
+                  size: 4x
                   script:
                       - . configure
                       - export APP_NAME=$(jq -r .name package.json)
