@@ -24,6 +24,7 @@ service:
 antiAffinity: hard
 podDisruptionBudget:
   minAvailable: 1
+replicaCount: 1
 resources:
   requests:
     cpu: 400m
