@@ -34,7 +34,7 @@ resources:
 
 env:
   - name: ROOT_URL
-    value: https://api-staging.fdvr.co/explorer
+    value: http://localhost
   - name: PORT
     value: "8080"
   - name: METEOR_SETTINGS
