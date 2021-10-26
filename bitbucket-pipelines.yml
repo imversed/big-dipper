@@ -19,7 +19,7 @@ deployByCommitScript: &deployByCommitScript
         --namespace $KUBERNETES_NAMESPACE \
         -f deploy/values.yml \
         --set-string "image.tag=$COMMIT_HASH" \
-        --set-string "service.http.ingresses.explorer.host=$HOST" \
+        --set-string "service.http.ingress.host=$HOST" \
         --set-string "resources.requests.cpu=$REQUESTS_CPU" \
         --set-string "resources.requests.memory=$REQUESTS_MEMORY" \
         --set-string "resources.limits.cpu=$LIMITS_CPU" \

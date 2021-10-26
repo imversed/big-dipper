@@ -8,18 +8,18 @@ health:
 
 service:
   http:
-    # See ingresses in manifests in this dir
     port: 8080
-    ingresses:
-      explorer:
-        path: /explorer(/|$)(.*)
-        annotations:
-          kubernetes.io/ingress.class: nginx
-          nginx.ingress.kubernetes.io/rewrite-target: /$2
-          nginx.ingress.kubernetes.io/ssl-redirect: "true"
-          nginx.ingress.kubernetes.io/enable-cors: "true"
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            more_set_headers "Access-Control-Expose-Headers: x-total-count";
+    ingress:
+      tls: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/limit-rps: "100"
+        nginx.ingress.kubernetes.io/proxy-connect-timeout: "15s"
+        nginx.ingress.kubernetes.io/affinity: cookie
+        nginx.ingress.kubernetes.io/affinity-mode: persistent
 
 antiAffinity: hard
 podDisruptionBudget:
