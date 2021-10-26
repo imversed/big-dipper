@@ -48,12 +48,12 @@ Block Explorer for Cosmos
 
 ```sh
 meteor npm install --save
-meteor --settings settings.json
+meteor --settings settings-staging.json
 ```
 
 ### Run via docker-compose
 ```sh
-METEOR_SETTINGS=$(cat settings.json) docker-compose up
+METEOR_SETTINGS=$(cat settings-staging.json) docker-compose up
 ```
 
 ### Run in production

@@ -17,7 +17,7 @@ deployByCommitScript: &deployByCommitScript
         helm upgrade $HELM_RELEASE fulldive/service \
         --install \
         --namespace $KUBERNETES_NAMESPACE \
-        -f deploy/api/values.yml \
+        -f deploy/values.yml \
         --set-string "image.tag=$COMMIT_HASH" \
         --set-string "service.http.ingresses.explorer.host=$HOST" \
         --set-string "resources.requests.cpu=$REQUESTS_CPU" \
