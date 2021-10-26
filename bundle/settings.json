@@ -1,0 +1,70 @@
+{
+    "public":{
+        "chainName": "FullDive Metachain",
+        "chainId": "metachain",
+        "gtm": "",
+        "slashingWindow": 10000,
+        "uptimeWindow": 250,
+        "initialPageSize": 30,
+        "secp256k1": false,
+        "bech32PrefixAccAddr": "meta",
+        "bech32PrefixAccPub": "metapub",
+        "bech32PrefixValAddr": "metavaloper",
+        "bech32PrefixValPub": "metavaloperpub",
+        "bech32PrefixConsAddr": "metavalcons",
+        "bech32PrefixConsPub": "metavalconspub",
+        "bondDenom": "fulldive",
+        "powerReduction": 1000000,
+        "coins": [
+            {
+                "denom": "fulldive",
+                "displayName": "FULLDIVE",
+                "fraction": 1000000
+            },
+            {
+                "denom": "fulldive",
+                "displayName": "FULLDIVE",
+                "fraction": 1000000
+            }
+        ],
+        "ledger":{
+            "coinType": 118,
+            "appName": "FullDive Metachain",
+            "appVersion": "2.16.0",
+            "gasPrice": 0.02
+        },
+        "modules": {
+            "bank": true,
+            "supply": true,
+            "minting": false,
+            "gov": true,
+            "distribution": false
+        },
+        "coingeckoId": "",
+        "networks": "",
+        "banners": false
+    },
+    "remote":{
+        "rpc":"http://metachain-staging.fdvr.co:26657",
+        "api":"http://metachain-staging.fdvr.co:1317"
+    },
+    "debug": {
+        "startTimer": true
+    },
+    "params":{
+        "startHeight": 0,
+        "defaultBlockTime": 5000,
+        "validatorUpdateWindow": 300,
+        "blockInterval": 15000,
+        "transactionsInterval": 18000,
+        "keybaseFetchingInterval": 18000000,
+        "consensusInterval": 1000,
+        "statusInterval":7500,
+        "signingInfoInterval": 1800000,
+        "proposalInterval": 5000,
+        "missedBlocksInterval": 60000,
+        "delegationInterval": 900000
+    }
+}
+
+

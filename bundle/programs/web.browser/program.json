@@ -1,0 +1,98 @@
+{
+  "format": "web-program-pre1",
+  "manifest": [
+    {
+      "path": "181725f3abe1c872aa6f8f60d158052c71b7b983.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/181725f3abe1c872aa6f8f60d158052c71b7b983.js?meteor_js_resource=true",
+      "replaceable": false,
+      "size": 4281433,
+      "hash": "181725f3abe1c872aa6f8f60d158052c71b7b983",
+      "sri": "VIay2r6I3s5MdoAVEp/fXASyfVHfmGjPW4B0/skUfawy4upeEE3OslkZ7fWB5OZArYFHj3PiMgFT+DqeZFJLPw=="
+    },
+    {
+      "path": "181725f3abe1c872aa6f8f60d158052c71b7b983.stats.json",
+      "where": "client",
+      "type": "json",
+      "cacheable": true,
+      "url": "/181725f3abe1c872aa6f8f60d158052c71b7b983.stats.json?meteor_js_resource=true",
+      "size": 121247,
+      "hash": "c37a06fcf22b9bae26baf0a6f50b1028ffbed1eb",
+      "sri": "Y5b1ZWQeeZ5dvVbXHjZ0TqvsDurwROhWJ/UeJhS1l/iviGBkjVS4l83t/RPxw11zCf4vVYvp/pW5Fe+MMPtoNQ=="
+    },
+    {
+      "path": "ef45115e92e678f42d81d0182373e342f45d9e53.css",
+      "where": "client",
+      "type": "css",
+      "cacheable": true,
+      "url": "/ef45115e92e678f42d81d0182373e342f45d9e53.css?meteor_css_resource=true",
+      "size": 186286,
+      "hash": "ef45115e92e678f42d81d0182373e342f45d9e53",
+      "sri": "tGfhn6nKyGCxZiVrCDFIiJinGRqn/Md10VpV/jmYirf57OopdRCff1T7Lakscqa4Qcxaj1Ui4lwzIa87qJ2FXw=="
+    },
+    {
+      "path": "app/img/big-dipper-icon-light.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/big-dipper-icon-light.svg",
+      "size": 815,
+      "hash": "39cec3f049322d60db1b1cca6d91c1fe579eb622",
+      "sri": null
+    },
+    {
+      "path": "app/img/big-dipper-logo-light.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/big-dipper-logo-light.svg",
+      "size": 3679,
+      "hash": "c21ae5a46c13f2f52ffab6e2afb05ad267c948c1",
+      "sri": null
+    },
+    {
+      "path": "app/img/big-dipper.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/big-dipper.png",
+      "size": 2812,
+      "hash": "b3e96650d1fc22054b0831fbc4641a295e95941c",
+      "sri": null
+    },
+    {
+      "path": "app/img/bluetooth.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/bluetooth.svg",
+      "size": 2093,
+      "hash": "1812ef9926b4bc4e9af7758a2277f6aa91227121",
+      "sri": null
+    },
+    {
+      "path": "app/img/usb.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/usb.svg",
+      "size": 1898,
+      "hash": "704fad58804b0162dd8ef04a6fb3fbc5c5810493",
+      "sri": null
+    },
+    {
+      "path": "head.html",
+      "where": "internal",
+      "type": "head",
+      "hash": "489bb3c6f90ab2f26acd22f5cb29941eba4d9f52"
+    },
+    {
+      "path": "body.html",
+      "where": "internal",
+      "type": "body",
+      "hash": "1b433f33b806b0ddfe84c13b41b6b68881ee49ec"
+    }
+  ]
+}

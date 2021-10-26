@@ -7,25 +7,25 @@ options:
     docker: true
     max-time: 30
 
-#deployByCommitScript: &deployByCommitScript
-#    - . configure
-#    - export APP_NAME=$(jq -r .name package.json)
-#    - export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
-#    - export COMMIT_HASH=$(echo $BITBUCKET_COMMIT | cut -c1-7)
-#    - export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
-#    - |
-#        helm upgrade $HELM_RELEASE fulldive/service \
-#        --install \
-#        --namespace $KUBERNETES_NAMESPACE \
-#        -f deploy/api/values.yml \
-#        --set-string "image.tag=$COMMIT_HASH" \
-#        --set-string "service.http.ingress.host=$HOST" \
-#        --set-string "resources.requests.cpu=$REQUESTS_CPU" \
-#        --set-string "resources.requests.memory=$REQUESTS_MEMORY" \
-#        --set-string "resources.limits.cpu=$LIMITS_CPU" \
-#        --set-string "resources.limits.memory=$LIMITS_MEMORY" \
-#        --wait
-#
+deployByCommitScript: &deployByCommitScript
+    - . configure
+    - export APP_NAME=$(jq -r .name package.json)
+    - export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
+    - export COMMIT_HASH=$(echo $BITBUCKET_COMMIT | cut -c1-7)
+    - export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
+    - |
+        helm upgrade $HELM_RELEASE fulldive/service \
+        --install \
+        --namespace $KUBERNETES_NAMESPACE \
+        -f deploy/api/values.yml \
+        --set-string "image.tag=$COMMIT_HASH" \
+        --set-string "service.http.ingresses.explorer.host=$HOST" \
+        --set-string "resources.requests.cpu=$REQUESTS_CPU" \
+        --set-string "resources.requests.memory=$REQUESTS_MEMORY" \
+        --set-string "resources.limits.cpu=$LIMITS_CPU" \
+        --set-string "resources.limits.memory=$LIMITS_MEMORY" \
+        --wait
+
 #tagLatestImageScript: &tagLatestImageScript
 #    - . configure
 #    - export APP_NAME=$(jq -r .name package.json)
@@ -55,7 +55,8 @@ pipelines:
                       - docker build -t $IMAGE_TAG .
                       - docker push $IMAGE_TAG
 
-#            - step:
-#                  name: Deploy to Staging
-#                  deployment: Staging
-#                  script: *deployByCommitScript
+            - step:
+                  name: Deploy to Staging
+                  deployment: Staging
+                  script: *deployByCommitScript
+                  trigger: manual

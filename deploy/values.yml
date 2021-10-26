@@ -1,0 +1,51 @@
+fullnameOverride: big-dipper
+image:
+  repository: us.gcr.io/spair-api/fulldivevr/big-dipper
+  pullPolicy: Always
+health:
+  path: /health
+  initialDelaySeconds: 60
+
+service:
+  http:
+    # See ingresses in manifests in this dir
+    port: 8080
+    ingresses:
+      explorer:
+        path: /explorer(/|$)(.*)
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          nginx.ingress.kubernetes.io/rewrite-target: /$2
+          nginx.ingress.kubernetes.io/ssl-redirect: "true"
+          nginx.ingress.kubernetes.io/enable-cors: "true"
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            more_set_headers "Access-Control-Expose-Headers: x-total-count";
+
+antiAffinity: hard
+podDisruptionBudget:
+  minAvailable: 1
+resources:
+  requests:
+    cpu: 400m
+    memory: 200Mi
+  limits:
+    cpu: 800m
+    memory: 320Mi
+
+env:
+  - name: ROOT_URL
+    value: http://localhost
+  - name: PORT
+    value: 8080
+  - name: NODE_ENV
+    value: production
+  - name: METEOR_SETTINGS
+    valueFrom:
+      configMapKeyRef:
+        key: settings
+        name: meteor-config
+  - name: MONGO_URL
+    valueFrom:
+      secretKeyRef:
+        name: big-dipper-mongo-url
+        key: url
