@@ -1,0 +1,12 @@
+because of huge memory usage by mteor it could be build in pipeline
+before merge in master run several steps
+
+1. yarn clean
+2. yarn build // it will build bundle and install internal deps
+
+after commit brang can me merged in master and pipeline will do rest
+
+You also can try, what was buil, local
+docker-compose up -d
+cd bundle
+MONGO_URL=mongodb://localhost:27017/myapp METEOR_SETTINGS=$(cat ../settings-staging.json) ROOT_URL=http://localhost PORT=8080 node main.js
