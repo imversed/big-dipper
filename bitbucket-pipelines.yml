@@ -59,4 +59,4 @@ pipelines:
                   name: Deploy to Staging
                   deployment: Staging
                   script: *deployByCommitScript
-                  trigger: manual
+#                  trigger: manual
