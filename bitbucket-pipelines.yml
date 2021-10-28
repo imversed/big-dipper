@@ -55,8 +55,13 @@ pipelines:
                       - docker build -t $IMAGE_TAG .
                       - docker push $IMAGE_TAG
 
+#            - step:
+#                  name: Deploy to Staging
+#                  deployment: Staging
+#                  script: *deployByCommitScript
+##                  trigger: manual
             - step:
-                  name: Deploy to Staging
-                  deployment: Staging
+                  name: Deploy to Production
+                  deployment: Production
                   script: *deployByCommitScript
-#                  trigger: manual
+                  trigger: manual
