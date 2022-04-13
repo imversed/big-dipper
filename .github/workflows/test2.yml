@@ -18,11 +18,19 @@ jobs:
         username: _json_key
         password: ${{ secrets.SERVICE_ACCOUNT_KEY }}
     steps:
-      - name: print hello
+      - name: build
         run: |
-          echo "hello from container"
-          helm version
-          kustomize version
+          - . configure
+          - export APP_NAME=$(jq -r .name package.json)
+          - export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
+          - export COMMIT_HASH=$(echo $GITHUB_SHA | cut -c1-7)
+          - export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
+          - docker build -t $IMAGE_TAG .
+          - docker push $IMAGE_TAG
+
+      - name: print next step
+        run: echo end=!!!!
+
 
 
 
