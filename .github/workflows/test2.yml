@@ -1,0 +1,29 @@
+name: Build and push image
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    name: Build image
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: big-dipper
+      PROJECT_ID: spair-api
+      IMAGE_HOST: us.gcr.io
+      IMAGE_PATH: fulldivevr
+    container:
+      image: us.gcr.io/spair-api/deploy/ci:7.0.0
+      credentials:
+        username: _json_key
+        password: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+    steps:
+      - name: print hello
+        run: |
+          echo "hello from container"
+          helm version
+          kustomize version
+
+
+
+
