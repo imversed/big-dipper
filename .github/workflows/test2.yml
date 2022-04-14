@@ -15,9 +15,6 @@ jobs:
         password: ${{ secrets.SERVICE_ACCOUNT_KEY }}
     steps:
       - name: build
-        env:
-          CLOUDSDK_API_KEY: ${{ secrets.CLOUDSDK_API_KEY }}
-          CLOUDSDK_COMPUTE_ZONE: ${{}}
         run: |
           - export APP_NAME=$(jq -r .name package.json)
           - export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
