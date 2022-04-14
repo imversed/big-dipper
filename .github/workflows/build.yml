@@ -15,7 +15,7 @@ jobs:
         password: ${{ secrets.SERVICE_ACCOUNT_KEY }}
     steps:
       - name: print GITHUB_SHA
-        run: $GITHUB_SHA
+        run: echo $GITHUB_SHA
 
       - name: Checkout
         uses: actions/checkout@v2

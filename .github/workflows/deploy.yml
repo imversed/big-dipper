@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: env print
-        run: $GITHUB_SHA
+        run: echo $GITHUB_SHA
