@@ -7,11 +7,6 @@ jobs:
   build:
     name: Build image
     runs-on: ubuntu-latest
-    env:
-      IMAGE_NAME: big-dipper
-      PROJECT_ID: spair-api
-      IMAGE_HOST: us.gcr.io
-      IMAGE_PATH: fulldivevr
     container:
       image: us.gcr.io/spair-api/deploy/ci:7.0.0
       credentials:
