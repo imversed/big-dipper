@@ -49,8 +49,7 @@ jobs:
           export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
           export COMMIT_HASH=$(echo $GITHUB_SHA | cut -c1-7)
           export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
-          >
-            helm upgrade ${{ secrets.HELM_RELEASE }} fulldive/service
+          > helm upgrade ${{ secrets.HELM_RELEASE }} fulldive/service
             --install --namespace ${{ secrets.KUBERNETES_NAMESPACE }}
             -f deploy/values.yml --set-string "image.tag=$COMMIT_HASH"
             --set-string "service.http.ingress.host=${{ secrets.HOST_STAGING }}"
