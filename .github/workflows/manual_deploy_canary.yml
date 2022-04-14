@@ -11,7 +11,7 @@ jobs:
         username: _json_key
         password: ${{ secrets.SERVICE_ACCOUNT_KEY }}
     steps:
-      - name: deploy to test
+      - name: deploy to canary
         env:
           CLOUDSDK_API_KEY: ${{ secrets.CLOUDSDK_API_KEY }}
           CLOUDSDK_COMPUTE_ZONE: ${{ secrets.CLOUDSDK_COMPUTE_ZONE }}
