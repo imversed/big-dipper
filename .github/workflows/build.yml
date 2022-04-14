@@ -34,7 +34,7 @@ jobs:
           export COMMIT_HASH=$(echo $GITHUB_SHA | cut -c1-7)
           export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
           docker build -t $IMAGE_TAG .
-          docker push $IMAGE_TAG
+
 
       - name: deploy to test
         env:

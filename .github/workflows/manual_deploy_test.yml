@@ -11,6 +11,9 @@ jobs:
         username: _json_key
         password: ${{ secrets.SERVICE_ACCOUNT_KEY }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: deploy to test
         env:
           CLOUDSDK_API_KEY: ${{ secrets.CLOUDSDK_API_KEY }}
@@ -25,5 +28,3 @@ jobs:
           export COMMIT_HASH=$(echo $GITHUB_SHA | cut -c1-7)
           export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
           helm upgrade ${{ secrets.HELM_RELEASE }} fulldive/service --install --namespace ${{ secrets.KUBERNETES_NAMESPACE }} -f deploy/values.yml --set-string "image.tag=$COMMIT_HASH" --set-string "service.http.ingress.host=${{ secrets.HOST_STAGING }}" --set-string "resources.requests.cpu=${{ secrets.REQUESTS_CPU }}" --set-string "resources.requests.memory=${{ secrets.REQUESTS_MEMORY }}" --set-string "resources.limits.cpu=${{ secrets.LIMITS_CPU }}" --set-string "resources.limits.memory=${{secrets.LIMITS_MEMORY}}" --wait
-
-
