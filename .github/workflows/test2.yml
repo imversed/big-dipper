@@ -18,7 +18,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: build
+        env:
+          CLOUDSDK_API_KEY: ${{ secrets.CLOUDSDK_API_KEY }}
+          CLOUDSDK_COMPUTE_ZONE: ${{ secrets.CLOUDSDK_COMPUTE_ZONE }}
+          CLOUDSDK_CORE_PROJECT: ${{ secrets.CLOUDSDK_CORE_PROJECT }}
+          KUBERNETES_CLUSTER: ${{ secrets.KUBERNETES_CLUSTER }}
         run: |-
+          . configure
           export APP_NAME=$(jq -r .name package.json)
           export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
           export COMMIT_HASH=$(echo $GITHUB_SHA | cut -c1-7)
