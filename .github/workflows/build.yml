@@ -15,7 +15,7 @@ jobs:
         password: ${{ secrets.SERVICE_ACCOUNT_KEY }}
     steps:
       - name: print GITHUB_SHA
-        run: echo $GITHUB_SHA
+        run: env
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -34,7 +34,7 @@ jobs:
           export COMMIT_HASH=$(echo $GITHUB_SHA | cut -c1-7)
           export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
           docker build -t $IMAGE_TAG .
-
+          docker push $IMAGE_TAG
 
       - name: deploy to test
         env:
