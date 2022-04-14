@@ -24,16 +24,6 @@ jobs:
           export IMAGE_NAME=us.gcr.io/spair-api/fulldivevr/$APP_NAME
           export COMMIT_HASH=$(echo $GITHUB_SHA | cut -c1-7)
           export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
-          >
-            helm upgrade ${{ secrets.HELM_RELEASE }} fulldive/service
-            --install --namespace ${{ secrets.KUBERNETES_NAMESPACE }}
-            -f deploy/values.yml
-            --set-string "image.tag=$COMMIT_HASH"
-            --set-string "service.http.ingress.host=${{ secrets.HOST_PRODUCTION }}"
-            --set-string "resources.requests.cpu=${{ secrets.REQUESTS_CPU }}"
-            --set-string "resources.requests.memory=${{ secrets.REQUESTS_MEMORY }}"
-            --set-string "resources.limits.cpu=${{ secrets.LIMITS_CPU }}"
-            --set-string "resources.limits.memory=${{secrets.LIMITS_MEMORY}}"
-            --wait
+          helm upgrade ${{ secrets.HELM_RELEASE }} fulldive/service --install --namespace ${{ secrets.KUBERNETES_NAMESPACE }} -f deploy/values.yml --set-string "image.tag=$COMMIT_HASH" --set-string "service.http.ingress.host=${{ secrets.HOST_PRODUCTION }}" --set-string "resources.requests.cpu=${{ secrets.REQUESTS_CPU }}" --set-string "resources.requests.memory=${{ secrets.REQUESTS_MEMORY }}" --set-string "resources.limits.cpu=${{ secrets.LIMITS_CPU }}" --set-string "resources.limits.memory=${{secrets.LIMITS_MEMORY}}" --wait
 
 
