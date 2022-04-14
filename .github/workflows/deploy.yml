@@ -5,3 +5,6 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    steps:
+      - name: env print
+        run: $GITHUB_SHA
