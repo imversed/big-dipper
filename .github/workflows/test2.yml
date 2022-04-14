@@ -31,6 +31,7 @@ jobs:
           export IMAGE_TAG=$IMAGE_NAME:$COMMIT_HASH
           docker build -t $IMAGE_TAG .
           docker push $IMAGE_TAG
+        shell: bash
 
       - name: ENV
         run: env
