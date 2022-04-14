@@ -14,7 +14,7 @@ jobs:
         username: _json_key
         password: ${{ secrets.SERVICE_ACCOUNT_KEY }}
     steps:
-      - name: print GITHUB_SHA
+      - name: print
         run: env
 
       - name: Checkout
